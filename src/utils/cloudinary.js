@@ -21,7 +21,7 @@ import fs from "fs";
       console.log(error);
     });
 
-  console.log(uploadResult);
+  //console.log(uploadResult);
 
   // Optimize delivery by resizing and applying auto-format and auto-quality
   const optimizeUrl = cloudinary.url("shoes", {
@@ -29,7 +29,7 @@ import fs from "fs";
     quality: "auto",
   });
 
-  console.log(optimizeUrl);
+  //console.log(optimizeUrl);
 
   // Transform the image: auto-crop to square aspect_ratio
   const autoCropUrl = cloudinary.url("shoes", {
@@ -39,7 +39,7 @@ import fs from "fs";
     height: 500,
   });
 
-  console.log(autoCropUrl);
+  //console.log(autoCropUrl);
 })();
 
 const uploadOnCloudinary = async (localFilePath) => {
@@ -50,8 +50,8 @@ const uploadOnCloudinary = async (localFilePath) => {
       resource_type: "auto",
     });
     // file has been uploaded successfull
-    console.log("file is uploaded on cloudinary ", response.url);
-    //fs.unlinkSync(localFilePath);
+    //console.log("file is uploaded on cloudinary ", response.url);
+    fs.unlinkSync(localFilePath);
     return response;
   } catch (error) {
     fs.unlinkSync(localFilePath); // remove the locally saved temporary file as the upload operation got failed
